@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>High End Dining</title>
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+    <!-- d3 JavaScript -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand navbar-dark" style="background-color: grey;">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="https://wclewett.github.io/D3-challenge/">High End Dining Locator</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link" href="https://wclewett.github.io/" style="color: rgb(255, 255, 255);">Portfolio Home</a>
+              </li>
+          </div>
+      </div>
+      </nav>
+    <div class="jumbotron" style="text-align: center;">
+        <h1 class="newspaperHeading">Find Your Next Favorite Restaurant</h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-6" id="stateDropdown" style="text-align: right;">
+        <p>Pick Your State</p>
+        <input type='text' name='query'>
+      </div>
+      <div class="col-sm-6" id="cityDropdown" style="text-align: left;">
+        <p>Pick You City</p>
+        <input type='text' name='query'>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-sm-12" style="text-align: center;">
+        <form id="myform" action="submit-form.php">
+          Search: <input type='text' name='query'>
+          <a href="#" id="submit">Submit</a>
+          </form>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="container" id="map-container" style="justify-items: center;">
+        <div id="map">
+          <!-- map div -->
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Powered by Yelp's Fusion API | Will Clewett &copy;2020</p>
+    </div>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <!-- API key -->
+    <script type="text/javascript" src="assets/js/config.js"></script>
+      <!-- JS  -->
+    <script type="text/javascript" src="assets/js/app.js"></script>
+
+
+  </body>
+</html>
