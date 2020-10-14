@@ -1,6 +1,6 @@
 // Creating map object
 var myMap = L.map("map", {
-  center: [40.7128, -74.0059],
+  center: [39.9526, -75.1652],
   zoom: 11
 });
 
@@ -45,3 +45,18 @@ cityMenu
     .text(function(d){
         return d.key;
     })
+
+
+function handleStateMenu() {
+  console.log("Load cities for selected states")
+};
+
+function handleSubmit() {
+  console.log("Submit map location and call heroku app")
+};
+
+// Attach an event to listen for the search recipes button
+d3. select("#stateDropdown").on("change", handleStateMenu);
+
+// Attach an event to listen for the generate random recipe button
+d3.select("#submit").on("click", handleSubmit);
