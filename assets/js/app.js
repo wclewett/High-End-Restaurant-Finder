@@ -30,7 +30,7 @@ stateMenu
         return d.key;
     })
 
-// Create 1st dropdown
+// Create 2nd dropdown
 var cityMenu = d3.select("#cityDropdown")
 
 cityMenu
@@ -46,9 +46,19 @@ cityMenu
         return d.key;
     })
 
-
 function handleStateMenu() {
-  console.log("Load cities for selected states")
+  // d3.json() for heroku app to access locationsDB from atlas
+  console.log("Load cities for selected state")
+  // console.log(data)
+  // create the drop down menu of cities
+	var cityLoader = d3.select("#cityDropdown")
+  .selectAll("option")
+  .data()
+  .enter().append("option")
+  .text(function(d) { return d.city; })
+  .attr("value", function (d, i) {
+    return i;
+  });
 };
 
 function handleSubmit() {
