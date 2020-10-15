@@ -1,3 +1,8 @@
+d3.json("http://localhost:5000/locations/states", function(data) {
+  console.log(data);
+});
+
+
 // Creating map object
 var myMap = L.map("map", {
   center: [39.9526, -75.1652],
