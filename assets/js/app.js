@@ -1,5 +1,6 @@
-d3.json("http://localhost:5000/locations/states", function(data) {
-  console.log(data);
+d3.json("http://localhost:5000/retrieve/locations/all/")
+  .then(function(error, data) {
+    console.log(data);
 });
 
 

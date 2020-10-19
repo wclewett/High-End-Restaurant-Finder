@@ -1,55 +1,70 @@
 # import dependencies
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, redirect
 import requests
 import pandas as pd
 import json
 import time
 import pymongo
 from pymongo import MongoClient
-from flask_cors import CORS
+from config import *
 
-
-app = Flask(__name__)
-CORS(app)
-
-conn = "mongodb+srv://wclewett:L3nPsktH9pGcO69X@yelphighendcluster.u2fcy.gcp.mongodb.net/highEnd?retryWrites=true&w=majority"
+app = Flask(__name__, static_folder='')
+conn = uri
 # connect to atlas
 client = MongoClient(conn)
 
 # home page
 @app.route("/")
 def index():
-    return("Welcome to our restaurant finder!")
+    # call locationsDB
+    locationsDB = client.locationsDB
+    # call states collection
+    states = locationsDB.states
+    locations = list(states.find({}))
+    location_dict = {}
+    for i in range(len(locations)):
+        loc_dict = {}
+        state_name = locations[i]['state']
+        cities = locations[i]['cities']
+        location_dict[state_name] = cities
+    return render_template("index.html")
 
-@app.route("/locations/states")
+@app.route("/retrieve/locations/all/")
 def get_locations():
     # call locationsDB
     locationsDB = client.locationsDB
     # call states collection
     states = locationsDB.states
-    # Read data from Atlas
-    states_list = list(states.find({}))
-    return states_list
+    #sort trhough json
+    locations = list(states.find({}))
+    location_dict = {}
+    for i in range(len(locations)):
+        loc_dict = {}
+        state_name = locations[i]['state']
+        cities = locations[i]['cities']
+        location_dict[state_name] = cities
+    return jsonify(location_dict)
 
 # Businesses Route
-@app.route("/locations/businesses/<city>")
+@app.route("/?businesses=<city>&type=existing/")
 def get_businesses(city=None):
     # call locationsDB
     locationsDB = client.locationsDB
     # call states collection
     businesses = locationsDB.businesses
     # Read data from Atlas
-    businesses_list = list(businesses.find( {"name":city} ))    
-    return (f"{businesses_list}")
+    businesses_list = list(businesses.find( {"name":city} ))
+    businesses_dict = {}
+    return jsonify(businesses_dict)
 
 # New City Route
-@app.route("/locations/newBusiness/<city>")
+@app.route("/?businesses=<city>&type=new/")
 def get_new_location():
     # call locationsDB
     locationsDB = client.locationsDB
     # call states collection
     states = locationsDB.states
-    # add craping code here
+    # add scraping code here
     return("nothing")
 
 if __name__ == "__main__":
