@@ -1,7 +1,6 @@
 # import dependencies
 from flask import Flask, jsonify, render_template, redirect
 import requests
-import pandas as pd
 import json
 import time
 import pymongo
