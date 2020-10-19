@@ -1,4 +1,4 @@
-d3.json("http://localhost:5000/retrieve/locations/all/")
+d3.json("https://high-end-restaurant-finder.herokuapp.com/retrieve/locations/all/")
   .then(function(error, data) {
     console.log(data);
 });
