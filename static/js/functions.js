@@ -256,7 +256,7 @@ function createMarkers(coordinates, businesses) {
 
 // web navigation functions
 function loadCity(city, state) {
-  var baseURL =  "http://127.0.0.1:5000/businesses/"
+  var baseURL =  "https://high-end-restaurant-finder.herokuapp.com/businesses/"
   var queryString1 = state.concat("/")
   var queryString2 = city
   window.location.replace(baseURL.concat(queryString1).concat(queryString2));
