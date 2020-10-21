@@ -4,6 +4,7 @@
 
 # user files
 /static/js/config.js
+config.js
 
 # output
 /.temp
