@@ -1,1 +1,0 @@
-uri = "mongodb+srv://wclewett:L3nPsktH9pGcO69X@yelphighendcluster.u2fcy.gcp.mongodb.net/highEnd?retryWrites=true&w=majority" 
