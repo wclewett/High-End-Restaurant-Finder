@@ -24,7 +24,7 @@ var margin = {
     top: 40,
     right: 40,
     bottom: 200,
-    left: 100
+    left: 150
   };
 
 // Define dimensions of the chart area
@@ -254,11 +254,6 @@ function createMarkers(coordinates, businesses) {
   return renderMap(coordinates, businessMarkers)
 };
 
-// web navigation functions
-function loadCity(city, state) {
-  window.open("https://high-end-restaurant-finder.herokuapp.com/businesses/" + state + "/" + city)
-};
-
 function handleSubmit() {
   // pull location
   var stateValue = document.getElementById("stateDropdown");
@@ -267,7 +262,7 @@ function handleSubmit() {
   var cityValue = document.getElementById("cityDropdown");
   var city =  cityValue.options[cityValue.selectedIndex].value;
   console.log(city);
-  loadCity(city, state);
+  window.open("https://high-end-restaurant-finder.herokuapp.com/businesses/" + state + "/" + city)
 };
 
 function alterGraph() {
