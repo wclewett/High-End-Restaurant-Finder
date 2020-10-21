@@ -256,10 +256,7 @@ function createMarkers(coordinates, businesses) {
 
 // web navigation functions
 function loadCity(city, state) {
-  var baseURL =  "https://high-end-restaurant-finder.herokuapp.com/businesses/"
-  var queryString1 = state.concat("/")
-  var queryString2 = city
-  window.location.replace(baseURL.concat(queryString1).concat(queryString2));
+  window.open("https://high-end-restaurant-finder.herokuapp.com/businesses/" + state + "/" + city)
 };
 
 function handleSubmit() {
