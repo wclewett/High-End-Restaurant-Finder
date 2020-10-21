@@ -4,7 +4,6 @@ __pycache__/
 *$py.class
 config.py
 config.js
-static/js/config.js
 
 # C extensions
 *.so
