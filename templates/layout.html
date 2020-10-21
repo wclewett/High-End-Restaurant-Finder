@@ -12,6 +12,7 @@
 
     <!-- d3 JavaScript -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
 
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
@@ -34,7 +35,7 @@
     <div class="jumbotron" style="text-align: center;">
         <h1 class="newspaperHeading">Find Your Next Favorite Restaurant</h1>
     </div>
-    <div class="row">
+    <div class="row" style="justify-content: center;">
       <div class="col-sm-6" style="text-align: right;">
         <label for="state">Choose your State:</label>
           <select id="stateDropdown" name="states">
@@ -51,17 +52,15 @@
       </div>
     </div>
     <br>
-    <br>
-    <br>
     <div class="row">
       <div class="col-sm-12" style="text-align: center;">
           <button id="submit" type="button">Find Your City</button>
       </div>
     </div>
     <br>
-    <br>
-    <br>
-    <br>
+    <div class="row" style="justify-content: center;">
+      <p style="justify-content: center;">{{ data.city }}, {{data.state }}</p>
+    </div>
     <div class="row">
       <div class="container" id="map-container" style="justify-items: center;">
         <div id="map">
@@ -69,7 +68,28 @@
         </div>
       </div>
     </div>
-    <p id='testd3Value'></p>
+    <br>
+    <div class="container" style="border: thin solid black;">
+      <div class="row" style="justify-content: left; font-size: 15px;">
+        <select id="resultsDropdown" name="results">
+          <option value="popularity">Most Ratings</option>
+          <option value="score">Overall Score</option>
+          <option value="rating">Best Rating</option>
+        </select>
+      </div>
+      <div class="row" style="justify-content: center;">
+        <h4>Top Restaurants in {{ data.city }}, {{data.state }}</h4>
+      </div>
+      <div class="row" style="justify-content: center;">
+        <div class="container" id="bar-container" style="justify-items: center;">
+          <!--SVG AREA for Interactive Bar Chart-->
+        </div>
+      </div>
+      <p style="font-size: 15px;">Notes: <br> - Popularity is based on how many reviews the business has on Yelp
+                <br> - Overall Score is the product of number of reviews times average rating
+                <br> - Rating scales from zero to five stars with increments of half stars
+      </p>
+    </div>
     <div id="footer">
       <p>Powered by Yelp's Fusion API | Built by Team Node &copy;2020</p>
     </div>
@@ -79,17 +99,20 @@
     crossorigin=""></script>
     <!-- API key -->
     <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
-    
     <!-- JS  -->
     <script type="text/javascript" src="{{url_for('static', filename='js/functions.js')}}"></script>
+    <!-- JS to be executed after page renders -->
     <script id="locations" type="text/javascript">
       var locations = locationPull({{ data | tojson }});
       var businesses = businessesPull({{ data | tojson }});
-      console.log({{ data | tojson }});
       stateDropdown(locations);
       d3.select("#stateDropdown").on("change", cityDropdown);
       d3.select("#submit").on("click", handleSubmit);
-      createBars();
+      var coordinates = coordinatesPull({{ data | tojson }});
+      createMarkers(coordinates, businesses);
+      alterGraph();
+      d3.select("#resultsDropdown").on("change", alterGraph);
+      d3.select("#resultsDropdown").on("change", toolTip.hide);
    </script>
   </body>
 </html>
