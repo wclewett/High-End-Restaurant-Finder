@@ -262,7 +262,7 @@ function handleSubmit() {
   var cityValue = document.getElementById("cityDropdown");
   var city =  cityValue.options[cityValue.selectedIndex].value;
   console.log(city);
-  window.open("https://high-end-restaurant-finder.herokuapp.com/businesses/" + state + "/" + city)
+  location.replace("https://high-end-restaurant-finder.herokuapp.com/businesses/" + state + "/" + city)
 };
 
 function alterGraph() {
