@@ -35,28 +35,44 @@
     <div class="jumbotron" style="text-align: center;">
         <h1 class="newspaperHeading">Find Your Next Favorite Restaurant</h1>
     </div>
-    <div class="row" style="justify-content: center;">
-      <div class="col-sm-6" style="text-align: right;">
-        <label for="state">Choose your State:</label>
-          <select id="stateDropdown" name="states">
-            <option value="base">-------------------</option>
-            <!--Append States here using d3-->            
-          </select>
+    <div class="row">
+      <div class="col">
+        <div class="col-12" style="text-align: center;">
+          <label for="state">Choose your State:</label>
+          <br>
+          <div class="btn-group">
+            <select id="stateDropdown" class="btn btn-secondary dropdown-toggle" name="states">
+              <option value="base">-------------------</option>
+              <!--Append States here using d3-->            
+            </select>
+          </div>
+        </div>  
       </div>
-      <div class="col-sm-6" style="text-align: left;">
+    </div>
+    <br>
+    <br>
+    <div class="row" style="justify-content: center;">
+      <div class="col-12" style="text-align: center;">
         <label for="city">Choose your City:</label>
-          <select id="cityDropdown" name="cities">
+        <br>
+          <select id="cityDropdown" name="cities" class="btn btn-secondary dropdown-toggle">
             <option value="base">--------</option>
             <!--Append Cities here using d3-->
           </select>
       </div>
     </div>
+    </div>  
+    <br>
+    <br>
     <br>
     <div class="row">
       <div class="col-sm-12" style="text-align: center;">
-          <button id="submit" type="button">Find Your City</button>
+          <button id="submit"  class="btn btn-primary" type="button">Find Restaurants</button>
       </div>
     </div>
+    <br>
+    <br>
+    <br>
     <br>
     <div class="row" style="justify-content: center;">
       <p style="justify-content: center;">{{ data.city }}, {{data.state }}</p>
