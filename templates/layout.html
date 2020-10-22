@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>High End Dining</title>
-    <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -16,7 +15,8 @@
 
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
-
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
     <nav class="navbar navbar-expand navbar-dark" style="background-color: rgb(245, 56, 56)">
@@ -101,10 +101,12 @@
           <!--SVG AREA for Interactive Bar Chart-->
         </div>
       </div>
-      <p style="font-size: 15px;">Notes: <br> - Popularity is based on how many reviews the business has on Yelp
-                <br> - Overall Score is the product of number of reviews times average rating
-                <br> - Rating scales from zero to five stars with increments of half stars
-      </p>
+      <div class="alert alert-secondary">
+        <p class="alert-heading" style="font-size: 15px;">Notes: <br> - Popularity is based on how many reviews the business has on Yelp
+          <br> - Overall Score is the product of number of reviews times average rating
+          <br> - Rating scales from zero to five stars with increments of half stars
+        </p>
+      </div>
     </div>
     <div id="footer">
       <p>Powered by Yelp's Fusion API | Built by Team Node &copy;2020</p>
